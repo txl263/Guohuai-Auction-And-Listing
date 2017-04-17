@@ -1,0 +1,18 @@
+1492397430804	geckodriver	INFO	Listening on 127.0.0.1:59243
+1492397432806	mozprofile::profile	INFO	Using profile path C:\Users\Eric\AppData\Local\Temp\rust_mozprofile.lfrR1pLrp8EI
+1492397432806	geckodriver::marionette	INFO	Starting browser C:\Program Files\Mozilla Firefox\firefox.exe with args []
+1492397432821	geckodriver::marionette	INFO	Connecting to Marionette on localhost:59249
+[GFX1]: Potential driver version mismatch ignored due to missing DLLs 0.0.0.0 and 0.0.0.0
+1492397433440	Marionette	INFO	Listening on port 59249
+[GFX1]: Potential driver version mismatch ignored due to missing DLLs 0.0.0.0 and 0.0.0.0
+1492397433890	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://114.215.133.84/talui/assets/js/utils.js, line 460: unreachable code after return statement
+JavaScript warning: http://114.215.133.84/talui/assets/js/utils.js, line 477: unreachable code after return statement
+JavaScript warning: http://114.215.133.84/talui/assets/js/utils.js, line 547: unreachable code after return statement
+JavaScript warning: http://114.215.133.84/talui/assets/js/utils.js, line 612: unreachable code after return statement
+JavaScript error: http://cdn.bootcss.com/require.js/2.1.22/require.min.js, line 1: Error: Script error for "page/menucfg/menucfg"
+http://requirejs.org/docs/errors.html#scripterror
+[Child 16264] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w64-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 345
+[Child 16264] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w64-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 345
+oz2_slave/m-rel-w64-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 345
+1492397418784	addons.productaddons	WARN	Failed downloading via XHR, status: 0, reason: error

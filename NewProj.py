@@ -8,9 +8,7 @@ from __future__ import unicode_literals
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys     
-#from selenium.webdriver.common.keys import Keys#
 from selenium.webdriver.support.ui import Select
-#from selenium.webdriver.support.ui import Select#
 from selenium.common import exceptions
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
@@ -20,6 +18,7 @@ import randomName
 import random
 from datetime import datetime
 from datetime import timedelta
+
 #for child_of_root in root:
     #print child_of_root.tag, child_of_root.attrib
 now = datetime.now()
@@ -32,10 +31,38 @@ issuing = random.randint(100000000, 999999999)  #转让方机构
 issuingCode = random.randint(100000000, 999999999)  #转让方机构代码
 interestStartTime = now.strftime('%Y-%m-%d %H:%M:%S')   #存续期开始时间
 interestEndTime = (now + timedelta(days=10)).strftime('%Y-%m-%d %H:%M:%S')   #存续期结束时间
-transferCount = random.randint(1000, 9999999)   #转让数量
+transferCount = str(random.randint(1000, 9999999))   #转让数量
 listingStartTime = (now + delta).strftime('%Y-%m-%d %H:%M:%S')  #挂牌开始时间
 listingEndTime = (now + timedelta(days=8)).strftime('%Y-%m-%d %H:%M:%S')  #挂牌结束时间  必须大于挂牌开始时间7天以上
-listingPrice = random.randint(10000, 999999)    #挂牌金额
+listingPrice = str(random.randint(10000, 999999))    #挂牌金额
+transfereeStartTime = (now + delta*3).strftime('%Y-%m-%d %H:%M:%S')  #资格审核开始时间
+transfereeEndTime = (now + delta*4).strftime('%Y-%m-%d %H:%M:%S')  #资格审核结束时间
+qualifications = randomName.generateName()	#受让方资质
+depositStartTime = (now + delta*5).strftime('%Y-%m-%d %H:%M:%S')  #保证金缴纳开始时间
+depositEndTime = (now + delta*6).strftime('%Y-%m-%d %H:%M:%S')  #保证金缴纳结束时间
+deposit = str(random.randint(10000, 99999999))   #保证金
+auctionExpenses = str(random.randint(1000, 9999999)) #竞价费用
+sellerTurnoverExpenses = str(random.randint(10000, 999999))  #卖方成交费用
+buyerTurnoverExpenses =str(random.randint(10000, 99999999))     #买方成交费用
+phone = randomName.generatePhone()  #发行商联系方式
+address = randomName.generateString()   #发行商联系地址
+
+print "存续期开始时间" + interestStartTime
+print "存续期结束时间" + interestEndTime
+print "挂牌开始时间" + listingStartTime
+print "挂怕结束时间" + listingEndTime
+print "资格审核开始时间" + transfereeStartTime
+print "资格审核结束时间" + transfereeEndTime
+print "受让方资质" + qualifications
+print "保证金缴纳开始时间" + depositStartTime
+print "保证金缴纳结束时间" + depositEndTime
+print "保证金" + deposit
+print "竞价费用" + auctionExpenses
+print "卖方成交费用" + sellerTurnoverExpenses
+print "买方成交费用" + buyerTurnoverExpenses
+print "发行商联系方式" + phone
+print "发行商联系地址" + address
+
 #setUp 用于设置初始化的部分，在测试用例执行前，这个方法中的函数将先被调用。这里将浏览器的调用和URL的访问放到初始化部分。#
 class NewProj(unittest.TestCase):
     def setUp(self):
@@ -69,7 +96,7 @@ class NewProj(unittest.TestCase):
         #driver.find_element_by_xpath("//input[@placeholder='请输入存续期开始时间']").clear
         driver.find_element_by_xpath("//input[@placeholder='请输入存续期开始时间']").click()
         driver.find_element_by_xpath("//input[@placeholder='请输入存续期开始时间']").clear()
-        driver.find_element_by_xpath("//input[@placeholder='请输入存续期开始时间']").send_keys(str(interestStartTime))
+        driver.find_element_by_xpath("//input[@placeholder='请输入存续期开始时间']").send_keys(interestStartTime)
 
         driver.find_element_by_xpath("//input[@placeholder='请输入存续期结束时间']").click()
         driver.find_element_by_xpath("//input[@placeholder='请输入存续期结束时间']").clear()
@@ -78,7 +105,7 @@ class NewProj(unittest.TestCase):
         driver.find_element_by_xpath("//input[@placeholder='请输入转让数量']").send_keys(str(transferCount))
 
         driver.find_element_by_xpath("//input[@placeholder='请输入挂牌开始时间']").click
-        driver.find_element_by_xpath("//input[@placeholder='请输入挂牌开始时间']").send_keys(Keys.ALT ,'a')
+        #driver.find_element_by_xpath("//input[@placeholder='请输入挂牌开始时间']").send_keys(Keys.ALT ,'a')
         driver.find_element_by_xpath("//input[@placeholder='请输入挂牌开始时间']").clear
         driver.find_element_by_xpath("//input[@placeholder='请输入挂牌开始时间']").send_keys(listingStartTime)
 
@@ -87,6 +114,19 @@ class NewProj(unittest.TestCase):
         driver.find_element_by_xpath("//input[@placeholder='请输入挂牌结束时间']").send_keys(listingEndTime)
 
         driver.find_element_by_xpath("//input[@placeholder='请输入挂牌金额(元)']").send_keys(str(listingPrice))
+
+        driver.find_element_by_xpath("//input[@placeholder='请输入资格审核开始时间']").send_keys(transfereeStartTime)
+        driver.find_element_by_xpath("//input[@placeholder='请输入资格审核结束时间']").send_keys(transfereeEndTime)
+        driver.find_element_by_xpath("//input[@placeholder='请输入受让方资质']").send_keys(qualifications)
+        driver.find_element_by_xpath("//input[@placeholder='请输入保证金缴纳开始时间']").send_keys(depositStartTime)
+        driver.find_element_by_xpath("//input[@placeholder='请输入保证金缴纳结束时间']").send_keys(depositEndTime)
+        driver.find_element_by_xpath("//input[@placeholder='请输入保证金']").send_keys(deposit)
+        driver.find_element_by_xpath("//input[@placeholder='请输入竞价费用']").send_keys(auctionExpenses)
+        driver.find_element_by_xpath("//input[@placeholder='请输入卖方成交费用']").send_keys(sellerTurnoverExpenses)
+        driver.find_element_by_xpath("//input[@placeholder='请输入买方成交费用']").send_keys(buyerTurnoverExpenses)
+        driver.find_element_by_xpath("//input[@placeholder='请输入电话号码']").send_keys(phone)
+        driver.find_element_by_xpath("//input[@placeholder='请输入发行商联系地址']").send_keys()
+
         time.sleep(100)
 
     def is_element_present(self, how, what):

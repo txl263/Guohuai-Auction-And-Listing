@@ -1,3 +1,5 @@
 preset.py
 *.pyc
 password.py
+*.log
+report.html
